@@ -12,5 +12,14 @@ namespace CRMApp.Controllers
         {
             return View();
         }
+
+        public IActionResult Welcome(string name, int numTimes)
+        {
+            ViewData["Message"] = "Hello " + name;
+            ViewData["NumTimes"] = numTimes;
+
+            return View();
+        }
+            
     }
 }
