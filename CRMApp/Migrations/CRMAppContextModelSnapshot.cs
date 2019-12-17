@@ -35,6 +35,7 @@ namespace CRMApp.Migrations
                     b.Property<string>("Login")
                         .HasColumnType("nvarchar(max)");
 
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
