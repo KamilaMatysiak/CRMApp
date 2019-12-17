@@ -56,8 +56,15 @@ namespace CRMApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Surname,DateOfBirth,Login,IdDeleted")] User user)
         {
+
             if (ModelState.IsValid)
             {
+                if (LoginExists(user.Login))
+                {
+                    ViewBag.check = "exists";
+                    return View(user);
+                    //return RedirectToAction(nameof(Index));
+                }
                 _context.Add(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -148,6 +155,10 @@ namespace CRMApp.Controllers
         private bool UserExists(int id)
         {
             return _context.User.Any(e => e.Id == id);
+        }
+        private bool LoginExists(string login)
+        {
+            return _context.User.Any(e => e.Login == login);
         }
     }
 }

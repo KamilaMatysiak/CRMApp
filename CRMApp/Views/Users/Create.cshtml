@@ -2,6 +2,12 @@
 
 @{
     ViewData["Title"] = "Create";
+    <script type="text/javascript">
+        var check = '@(ViewBag.check)';
+        if (check == "exists") {
+            alert("Login already exists!");
+        }
+    </script>
 }
 
 <h1>Create</h1>
