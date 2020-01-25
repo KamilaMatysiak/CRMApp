@@ -65,6 +65,7 @@ namespace CRMApp.Controllers
                     return View(user);
                     //return RedirectToAction(nameof(Index));
                 }
+
                 _context.Add(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -147,7 +148,8 @@ namespace CRMApp.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var user = await _context.User.FindAsync(id);
-            _context.User.Remove(user);
+            user.IdDeleted = true;
+            //_context.User.Remove(user);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

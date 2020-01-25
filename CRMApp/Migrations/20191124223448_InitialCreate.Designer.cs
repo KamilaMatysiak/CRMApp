@@ -33,7 +33,7 @@ namespace CRMApp.Migrations
 
                     b.Property<bool>("IdDeleted")
                         .HasColumnType("bit");
-
+                        
                     b.Property<string>("Login")
                         .HasColumnType("nvarchar(max)");
 
